@@ -15,9 +15,9 @@ fauxmoESP fauxmo;
 /**
  * Define LED pixel count and LED pin
  */
-#define LED_COUNT 12
+#define LED_COUNT 300
 #define LED_PIN 2
-int BRI = 200;
+int BRI = 100;
 
 /**
  * Parameter 1 = number of pixels in strip
@@ -29,7 +29,7 @@ int BRI = 200;
  * NEO_RGB     Pixels are wired for RGB bitstream (v1 FLORA pixels, not v2)
  * NEO_RGBW    Pixels are wired for RGBW bitstream (NeoPixel RGBW products)
  */
-WS2812FX ws2812fx = WS2812FX(LED_COUNT, LED_PIN, NEO_GRBW + NEO_KHZ800);
+WS2812FX ws2812fx = WS2812FX(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
 /**
  * LEDs are off by default
@@ -95,6 +95,7 @@ void callback(uint8_t device_id, const char * device_name, bool state) {
                         ws2812fx.setMode(0);
                 }
         }
+        /*
         //FX_MODE_STATIC_WHITE 'Alexa, turn white lights on'
         if ( (strcmp(device_name, "white lights") == 0) ) {
                 if (state) {
@@ -108,6 +109,7 @@ void callback(uint8_t device_id, const char * device_name, bool state) {
                         ws2812fx.setMode(0);
                 }
         }
+        */
         //FX_MODE_LARSON_SCANNER 'Alexa, turn kitt lights on'
         if ( (strcmp(device_name, "kitt lights") == 0) ) {
                 if (state) {
@@ -197,7 +199,7 @@ void setup() {
         wifiSetup();
 
         // Fauxmo devices
-        fauxmo.addDevice("white lights");
+        // fauxmo.addDevice("white lights");
         fauxmo.addDevice("night mode");
         fauxmo.addDevice("kitt lights");
         fauxmo.addDevice("rainbow lights");
