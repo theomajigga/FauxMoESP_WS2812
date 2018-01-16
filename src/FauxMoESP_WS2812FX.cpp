@@ -122,7 +122,48 @@ void callback(uint8_t device_id, const char * device_name, bool state) {
                         ws2812fx.setMode(0);
                 }
         }
+        //FX_MODE_STROBE 'Alexa, turn strobe lights on'
+        if ( (strcmp(device_name, "strobe lights") == 0) ) {
+                if (state) {
+                        neopixel_state = true;
+                        ws2812fx.setBrightness(BRI);
+                        ws2812fx.setSpeed(200);
+                        ws2812fx.setMode(26);
+                } else {
+                        neopixel_state = false;
+                        ws2812fx.setBrightness(0);
+                        ws2812fx.setMode(0);
 
+                }
+        }
+        //FX_MODE_HYPER_SPARKLE  'Alexa, turn hyper sparkle lights on'
+        if ( (strcmp(device_name, "hyper sparlke lights") == 0) ) {
+                if (state) {
+                        neopixel_state = true;
+                        ws2812fx.setBrightness(BRI);
+                        ws2812fx.setSpeed(200);
+                        ws2812fx.setMode(25);
+                } else {
+                        neopixel_state = false;
+                        ws2812fx.setBrightness(0);
+                        ws2812fx.setMode(0);
+
+                }
+        }
+        //FX_MODE_COMET  'Alexa, turn comet lights on'
+        if ( (strcmp(device_name, "comet lights") == 0) ) {
+                if (state) {
+                        neopixel_state = true;
+                        ws2812fx.setBrightness(BRI);
+                        ws2812fx.setSpeed(200);
+                        ws2812fx.setMode(44);
+                } else {
+                        neopixel_state = false;
+                        ws2812fx.setBrightness(0);
+                        ws2812fx.setMode(0);
+
+                }
+        }
         //'Alexa, turn night mode on' to DIM lights
         if ( (strcmp(device_name, "night mode") == 0) ) {
                 if (state) {
@@ -161,6 +202,9 @@ void setup() {
         fauxmo.addDevice("kitt lights");
         fauxmo.addDevice("rainbow lights");
         fauxmo.addDevice("breathe lights");
+        fauxmo.addDevice("strobe lights");
+        fauxmo.addDevice("hyper sparkle lights");
+        fauxmo.addDevice("comet lights");
         fauxmo.onMessage(callback);
 }
 
