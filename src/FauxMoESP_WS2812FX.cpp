@@ -73,7 +73,7 @@ void callback(uint8_t device_id, const char * device_name, bool state) {
                         neopixel_state = true;
                         ws2812fx.setBrightness(BRI);
                         ws2812fx.setSpeed(200);
-                        ws2812fx.setMode(9);
+                        ws2812fx.setMode(12);
                 } else {
                         neopixel_state = false;
                         ws2812fx.setBrightness(0);
@@ -129,7 +129,7 @@ void callback(uint8_t device_id, const char * device_name, bool state) {
                 if (state) {
                         neopixel_state = true;
                         ws2812fx.setBrightness(BRI);
-                        ws2812fx.setSpeed(200);
+                        ws2812fx.setSpeed(500);
                         ws2812fx.setMode(26);
                 } else {
                         neopixel_state = false;
@@ -143,7 +143,7 @@ void callback(uint8_t device_id, const char * device_name, bool state) {
                 if (state) {
                         neopixel_state = true;
                         ws2812fx.setBrightness(BRI);
-                        ws2812fx.setSpeed(200);
+                        ws2812fx.setSpeed(500);
                         ws2812fx.setMode(25);
                 } else {
                         neopixel_state = false;
@@ -178,6 +178,62 @@ void callback(uint8_t device_id, const char * device_name, bool state) {
                         ws2812fx.setBrightness(200);
                 }
         }
+        //FX_MODE_RANDOM_COLOR  'Alexa, turn random color lights on'
+        if ( (strcmp(device_name, "random color lights") == 0) ) {
+                if (state) {
+                        neopixel_state = true;
+                        ws2812fx.setBrightness(BRI);
+                        ws2812fx.setSpeed(200);
+                        ws2812fx.setMode(8);
+                } else {
+                        neopixel_state = false;
+                        ws2812fx.setBrightness(0);
+                        ws2812fx.setMode(0);
+
+                }
+        }
+        //FX_MODE_MULT_DYNAMIC  'Alexa, turn multi dynamic lights on'
+        if ( (strcmp(device_name, "multi dynamic lights") == 0) ) {
+                if (state) {
+                        neopixel_state = true;
+                        ws2812fx.setBrightness(BRI);
+                        ws2812fx.setSpeed(200);
+                        ws2812fx.setMode(10);
+                } else {
+                        neopixel_state = false;
+                        ws2812fx.setBrightness(0);
+                        ws2812fx.setMode(0);
+
+                }
+        }
+        //FX_MODE_DUAL_SCAN   'Alexa, turn dual scan lights on'
+        if ( (strcmp(device_name, "dual scan lights") == 0) ) {
+                if (state) {
+                        neopixel_state = true;
+                        ws2812fx.setBrightness(BRI);
+                        ws2812fx.setSpeed(200);
+                        ws2812fx.setMode(14);
+                } else {
+                        neopixel_state = false;
+                        ws2812fx.setBrightness(0);
+                        ws2812fx.setMode(0);
+
+                }
+        }
+        //FX_MODE_THEATER_CHASE_RAINBOW 'Alexa, turn multi dynamic lights on'
+        if ( (strcmp(device_name, "chase rainbow lights") == 0) ) {
+                if (state) {
+                        neopixel_state = true;
+                        ws2812fx.setBrightness(BRI);
+                        ws2812fx.setSpeed(200);
+                        ws2812fx.setMode(17);
+                } else {
+                        neopixel_state = false;
+                        ws2812fx.setBrightness(0);
+                        ws2812fx.setMode(0);
+
+                }
+        }
 }
 
 void setup() {
@@ -207,6 +263,10 @@ void setup() {
         fauxmo.addDevice("strobe lights");
         fauxmo.addDevice("hyper sparkle lights");
         fauxmo.addDevice("comet lights");
+        fauxmo.addDevice("random color lights");
+        fauxmo.addDevice("multi dynamic lights");
+        fauxmo.addDevice("dual scan lights");
+        fauxmo.addDevice("chase rainbow lights");
         fauxmo.onMessage(callback);
 }
 
