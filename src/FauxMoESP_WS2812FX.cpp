@@ -2,7 +2,7 @@
 #include <Adafruit_NeoPixel.h>
 #include <ESP8266WiFi.h>
 #include "fauxmoESP.h"
-#include <WS2812FX-master/WS2812FX.h>
+#include <WS2812FX.h>
 
 /**
  * Set your SSID and WIFI password
@@ -139,7 +139,7 @@ void callback(uint8_t device_id, const char * device_name, bool state) {
                 }
         }
         //FX_MODE_HYPER_SPARKLE  'Alexa, turn hyper sparkle lights on'
-        if ( (strcmp(device_name, "hyper sparlke lights") == 0) ) {
+        if ( (strcmp(device_name, "hyper sparkle lights") == 0) ) {
                 if (state) {
                         neopixel_state = true;
                         ws2812fx.setBrightness(BRI);
